@@ -1,0 +1,47 @@
+[submodule "clients/merchant-api-client-php"]
+	path = clients/merchant-api-client-php
+	url = https://github.com/channelengine/merchant-api-client-php
+
+[submodule "clients/channel-api-client-php"]
+	path = clients/channel-api-client-php
+	url = https://github.com/channelengine/channel-api-client-php
+
+[submodule "clients/merchant-api-client-python"]
+	path = clients/merchant-api-client-python
+	url = https://github.com/channelengine/merchant-api-client-python
+
+[submodule "clients/channel-api-client-python"]
+	path = clients/channel-api-client-python
+	url = https://github.com/channelengine/channel-api-client-python
+
+[submodule "clients/merchant-api-client-csharp"]
+	path = clients/merchant-api-client-csharp
+	url = https://github.com/channelengine/merchant-api-client-csharp
+
+[submodule "clients/channel-api-client-csharp"]
+	path = clients/channel-api-client-csharp
+	url = https://github.com/channelengine/channel-api-client-csharp
+
+[submodule "clients/merchant-api-client-java"]
+	path = clients/merchant-api-client-java
+	url = https://github.com/channelengine/merchant-api-client-java
+
+[submodule "clients/channel-api-client-java"]
+	path = clients/channel-api-client-java
+	url = https://github.com/channelengine/channel-api-client-java
+
+[submodule "clients/merchant-api-client-ruby"]
+	path = clients/merchant-api-client-ruby
+	url = https://github.com/channelengine/merchant-api-client-ruby
+
+[submodule "clients/channel-api-client-ruby"]
+	path = clients/channel-api-client-ruby
+	url = https://github.com/channelengine/channel-api-client-ruby
+
+[submodule "clients/merchant-api-client-swift4"]
+	path = clients/merchant-api-client-swift4
+	url = https://github.com/channelengine/merchant-api-client-swift4
+
+[submodule "clients/channel-api-client-swift4"]
+	path = clients/channel-api-client-swift4
+	url = https://github.com/channelengine/channel-api-client-swift4
