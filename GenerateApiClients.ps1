@@ -31,6 +31,12 @@ ForEach($api in $apis)
         Write-Host $targetPath
         Write-Host $specUrl
 
+        # Swagger codegen won't regenerate files like pom.xml and build.gradle, but they contain the package version.
+        # Delete them to force regeneration.
+        if($language -eq "java") {
+            Remove-Item "$targetPath/pom.xml", "$targetPath/build.gradle", "$targetPath/build.sbt" -ErrorAction Ignore
+        }
+
         $gitPath = $targetPath
         $templatePath = $pathHelper.GetUnresolvedProviderPathFromPSPath("$templatesDir/$language")
 
