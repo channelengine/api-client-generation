@@ -15,7 +15,7 @@ ForEach($api in $apis)
 {
     $specUrl = "$hostName/api/swagger/docs/$api"
     $spec = Invoke-RestMethod -Uri $specUrl
-    $version = $spec.info.version
+    $version = $spec."x-version"
     Write-Host $version
 
     $apiLabel =  (Get-Culture).TextInfo.ToTitleCase($api)
