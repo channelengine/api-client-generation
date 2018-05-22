@@ -1,14 +1,19 @@
-param([switch]$commit=$false)
+param([switch]$commit=$false,[switch]$useLocal=$false)
 
 $clientsDir = Resolve-Path -Path "./clients/"
 $templatesDir = Resolve-Path -Path "./templates/"
 
 $languages = "csharp", "java", "php", "python", "ruby", "swift4"
 $apis = "merchant", "channel"
+$hostName = "https://demo.channelengine.net"
+
+If($useLocal) {
+    $hostName = "http://dev.channelengine.local"
+}
 
 ForEach($api in $apis)
 {
-    $specUrl = "https://demo.channelengine.net/api/swagger/docs/$api"
+    $specUrl = "$hostName/api/swagger/docs/$api"
     $spec = Invoke-RestMethod -Uri $specUrl
     $version = $spec.info.version
     Write-Host $version
