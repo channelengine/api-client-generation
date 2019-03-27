@@ -13,7 +13,7 @@ If($useLocal) {
 
 ForEach($api in $apis)
 {
-    $specUrl = "$hostName/api/swagger/docs/$api"
+    $specUrl = "$hostName/api/swagger/$api/swagger.json"
     $spec = Invoke-RestMethod -Uri $specUrl
     $version = $spec."x-version"
     Write-Host $version
