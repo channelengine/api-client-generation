@@ -53,7 +53,7 @@ ForEach($api in $apis)
         # Generate everything (models, api, supporting files) without docs and tests
         $systemParams = "-Dmodels -DmodelDocs=false -DmodelTests=false -Dapis -DapiDocs=false -DapiTests=false -DsupportingFiles"
         $javaCommand = "java $systemParams -jar "
-        $swaggerCommand = """$workingDir\swagger-codegen-cli-2.4.3.jar"" generate "
+        $swaggerCommand = """$workingDir\swagger-codegen-cli-2.4.0.jar"" generate "
         $swaggerCommand += "-i $specUrl "
         $swaggerCommand += "-l $language "
         $swaggerCommand += "-o ""$targetPath"""
