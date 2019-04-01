@@ -1,5 +1,8 @@
 param([switch]$commit=$false,[switch]$useLocal=$false)
 
+# Use newer TLS versions
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+
 $clientsDir = Resolve-Path -Path "./clients/"
 $templatesDir = Resolve-Path -Path "./templates/"
 
