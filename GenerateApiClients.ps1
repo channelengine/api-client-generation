@@ -18,10 +18,9 @@ ForEach($api in $apis)
 {
     $specUrl = "$hostName/api/swagger/$api/swagger.json"
     $spec = Invoke-RestMethod -Uri $specUrl
-    $version = $spec."x-version"
+    $version = $spec."info"."version"
     Write-Host $version
 
-    $apiLabel =  (Get-Culture).TextInfo.ToTitleCase($api)
     $pathHelper = $ExecutionContext.SessionState.Path
     $workingDir = Get-Location
 
@@ -39,7 +38,7 @@ ForEach($api in $apis)
         if($language -eq "java") {
             Remove-Item "$targetPath/pom.xml", "$targetPath/build.gradle", "$targetPath/build.sbt" -ErrorAction Ignore
         }
-
+        
         $gitPath = $targetPath
         $templatePath = $pathHelper.GetUnresolvedProviderPathFromPSPath("$templatesDir/$language")
 
@@ -51,14 +50,14 @@ ForEach($api in $apis)
             podVersion = $version;
         }
 
-        $versionPropsString = ($versionProps.GetEnumerator() | % { "$($_.Key)=$($_.Value)" }) -join ','
+        $versionPropsString = ($versionProps.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ','
 
         # Generate everything (models, api, supporting files) without docs and tests
         $systemParams = "-Dmodels -DmodelDocs=false -DmodelTests=false -Dapis -DapiDocs=false -DapiTests=false -DsupportingFiles"
         $javaCommand = "java $systemParams -jar "
-        $swaggerCommand = """$workingDir\swagger-codegen-cli-2.4.8.jar"" generate "
+        $swaggerCommand = """$workingDir\openapi-generator-cli-5.0.0.jar"" generate "
         $swaggerCommand += "-i $specUrl "
-        $swaggerCommand += "-l $language "
+        $swaggerCommand += "-g $language "
         $swaggerCommand += "-o ""$targetPath"""
         $swaggerCommand += "--config ""$configPath"""
         $swaggerCommand += "--additional-properties ""$versionPropsString"""
