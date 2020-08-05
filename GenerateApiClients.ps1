@@ -6,7 +6,7 @@ param([switch]$commit=$false,[switch]$useLocal=$false)
 $clientsDir = Resolve-Path -Path "./clients/"
 $templatesDir = Resolve-Path -Path "./templates/"
 
-$languages = "csharp", "java", "php", "python", "ruby", "swift4"
+$languages = "csharp-netcore", "java", "php", "python", "ruby", "swift5"
 $apis = "merchant", "channel"
 $hostName = "https://demo.channelengine.net"
 
@@ -27,7 +27,15 @@ ForEach($api in $apis)
     # Fetch the clients from swagger api
     ForEach($language in $languages)
     {
-        $targetPath = $pathHelper.GetUnresolvedProviderPathFromPSPath("$clientsDir/$api-api-client-$language")
+        $clientLanguage = $language;
+        if($language -eq "swift5") {
+            $clientLanguage = "swift";
+        }
+        if($language -eq "csharp-netcore") {
+            $clientLanguage = "csharp";
+        }
+
+        $targetPath = $pathHelper.GetUnresolvedProviderPathFromPSPath("$clientsDir/$api-api-client-$clientLanguage")
         $configPath = "$targetPath\swagger-config.json"
 
         Write-Host $targetPath
