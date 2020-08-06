@@ -11,7 +11,7 @@
 	path = clients/merchant-api-client-ruby
 	url = https://github.com/channelengine/merchant-api-client-ruby
 [submodule "clients/merchant-api-client-swift4"]
-	path = clients/merchant-api-client-swift4
+	path = clients/merchant-api-client-swift
 	url = https://github.com/channelengine/merchant-api-client-swift4
 [submodule "clients/merchant-api-client-java"]
 	path = clients/merchant-api-client-java
@@ -32,5 +32,5 @@
 	path = clients/channel-api-client-ruby
 	url = https://github.com/channelengine/channel-api-client-ruby
 [submodule "clients/channel-api-client-swift4"]
-	path = clients/channel-api-client-swift4
+	path = clients/channel-api-client-swift
 	url = https://github.com/channelengine/channel-api-client-swift
