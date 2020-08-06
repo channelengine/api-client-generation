@@ -33,4 +33,4 @@
 	url = https://github.com/channelengine/channel-api-client-ruby
 [submodule "clients/channel-api-client-swift4"]
 	path = clients/channel-api-client-swift4
-	url = https://github.com/channelengine/channel-api-client-swift4
+	url = https://github.com/channelengine/channel-api-client-swift
