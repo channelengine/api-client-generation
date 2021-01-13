@@ -48,7 +48,7 @@ ForEach($api in $apis)
         }
         
         $gitPath = $targetPath
-        $templatePath = $pathHelper.GetUnresolvedProviderPathFromPSPath("$templatesDir/$language")
+        $templatePath = $pathHelper.GetUnresolvedProviderPathFromPSPath("$templatesDir/$clientLanguage")
 
         $templateDirParameter = "";
         $versionProps = @{
