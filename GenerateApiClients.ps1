@@ -63,7 +63,7 @@ ForEach($api in $apis)
         # Generate everything (models, api, supporting files) without docs and tests
         $systemParams = "-Dmodels -DmodelDocs=false -DmodelTests=false -Dapis -DapiDocs=false -DapiTests=false -DsupportingFiles"
         $javaCommand = "java $systemParams -jar "
-        $swaggerCommand = """$workingDir\openapi-generator-cli-5.0.0.jar"" generate "
+        $swaggerCommand = """$workingDir\openapi-generator-cli-5.1.1.jar"" generate "
         $swaggerCommand += "-i $specUrl "
         $swaggerCommand += "-g $language "
         $swaggerCommand += "-o ""$targetPath"""
