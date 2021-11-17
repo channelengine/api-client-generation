@@ -1,3 +1,4 @@
+#!/usr/bin/env powershell
 param([switch]$commit=$false,[switch]$useLocal=$false)
 
 # Use newer TLS versions
@@ -82,8 +83,9 @@ ForEach($api in $apis)
         
         Set-Location $targetPath
 
+        git checkout master
         # Always run git add to fix newline issues on windows
-        git add .
+		git add .
 
         if($commit) {
             git commit -m "Generate version $version"
