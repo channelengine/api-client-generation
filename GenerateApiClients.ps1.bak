@@ -84,7 +84,6 @@ ForEach($api in $apis)
         Set-Location $targetPath
 
         git checkout master
-		git pull
         # Always run git add to fix newline issues on windows
 		git add .
 
