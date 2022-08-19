@@ -19,8 +19,7 @@ ForEach($api in $apis)
 {
     $specUrl = "$hostName/api/swagger/$api/swagger.json"
     $spec = Invoke-RestMethod -Uri $specUrl
-    #$version = $spec."info"."version"
-	$version = "2.12.0"
+    $version = $spec."info"."version"
     Write-Host $version
 
     $pathHelper = $ExecutionContext.SessionState.Path
