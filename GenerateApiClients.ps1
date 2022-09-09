@@ -4,6 +4,8 @@ param([switch]$commit=$false,[switch]$useLocal=$false)
 # Use newer TLS versions
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 
+[System.Environment]::SetEnvironmentVariable('JAVA_TOOL_OPTIONS','-Dio.swagger.parser.util.RemoteUrl.trustAll=true -Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true') 
+
 $clientsDir = Resolve-Path -Path "./clients/"
 $templatesDir = Resolve-Path -Path "./templates/"
 
@@ -18,7 +20,7 @@ If($useLocal) {
 ForEach($api in $apis)
 {
     $specUrl = "$hostName/api/swagger/$api/swagger.json"
-    $spec = Invoke-RestMethod -Uri $specUrl
+    $spec = Invoke-RestMethod -SkipCertificateCheck -Uri $specUrl
     $version = $spec."info"."version"
     Write-Host $version
 

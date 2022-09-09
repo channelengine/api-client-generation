@@ -4,10 +4,12 @@ param([switch]$commit=$false,[switch]$useLocal=$false)
 # Use newer TLS versions
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 
+[System.Environment]::SetEnvironmentVariable('JAVA_TOOL_OPTIONS','-Dio.swagger.parser.util.RemoteUrl.trustAll=true -Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true') 
+
 $clientsDir = Resolve-Path -Path "./clients/"
 $templatesDir = Resolve-Path -Path "./templates/"
 
-$languages = "csharp-netcore", "java", "php", "python", "ruby", "swift5"
+$languages = "csharp-netcore" , "java", "php", "python", "ruby", "swift5"
 $apis = "merchant", "channel"
 $hostName = "https://demo.channelengine.net"
 
@@ -18,9 +20,8 @@ If($useLocal) {
 ForEach($api in $apis)
 {
     $specUrl = "$hostName/api/swagger/$api/swagger.json"
-    $spec = Invoke-RestMethod -Uri $specUrl
-    #$version = $spec."info"."version"
-	$version = "2.12.0"
+    $spec = Invoke-RestMethod -SkipCertificateCheck -Uri $specUrl
+    $version = $spec."info"."version"
     Write-Host $version
 
     $pathHelper = $ExecutionContext.SessionState.Path
